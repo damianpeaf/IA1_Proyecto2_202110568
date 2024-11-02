@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyecto 2 - IA1 - 202110568</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-network.min.js"></script>
 </head>
 
 <body class="bg-gray-100 p-6">
-
   <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
     <header class="mb-6">
       <h1 class="text-2xl text-center font-bold text-gray-700">Proyecto 2 - IA1 - 202110568 </h1>
@@ -24,25 +24,13 @@
     <div class="mb-6">
       <label for="model-select" class="block text-gray-700 font-medium mb-2">Seleccionar Algoritmo de Machine Learning</label>
       <select id="model-select" class="block w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300">
-        <option value="regresion_lineal">Regresión Lineal</option>
-        <option value="clasificacion_logistica">Clasificación Logística</option>
-        <option value="arboles_decision">Árboles de Decisión</option>
+        <option value="linear-regression">Regresión Lineal</option>
+        <option value="polynomial-regression">Regresión Polinomial</option>
+        <option value="decision-tree">Árbol de Decisión</option>
       </select>
     </div>
 
     <div class="mb-6">
-      <h2 class="text-xl font-semibold text-gray-700">Parametrización</h2>
-      <div class="flex gap-4 mb-4">
-        <div class="w-1/2">
-          <label for="train-data" class="block text-gray-700 font-medium mb-2">Porcentaje de Train Data (%)</label>
-          <input type="number" id="train-data" min="0" max="100" class="w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300">
-        </div>
-        <div class="w-1/2">
-          <label for="test-data" class="block text-gray-700 font-medium mb-2">Porcentaje de Test Data (%)</label>
-          <input type="number" id="test-data" min="0" max="100" class="w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300">
-        </div>
-      </div>
-
       <div class="mb-4">
         <label for="training-goal" class="block text-gray-700 font-medium mb-2">Objetivo del Entrenamiento</label>
         <select id="training-goal" class="block w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300">
@@ -55,33 +43,29 @@
 
       <div class="mb-4">
         <label for="model-parameters" class="block text-gray-700 font-medium mb-2">Parámetros Específicos del Modelo</label>
-        <textarea id="model-parameters" class="w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300" rows="3" placeholder="Ej: Número de iteraciones, tasa de aprendizaje, etc."></textarea>
+        <textarea id="model-params" class="w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300" rows="3" placeholder="degree=2;"></textarea>
       </div>
 
-      <div class="mb-4">
-        <label for="additional-parameters" class="block text-gray-700 font-medium mb-2">Parámetros Adicionales</label>
-        <div id="prediction-params" class="hidden">
-          <label class="block text-gray-700 font-medium mb-2">Nuevo rango en el eje X (Predicción)</label>
-          <input type="text" class="w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300" placeholder="Ej: 10-50">
-        </div>
-        <div id="classification-params" class="hidden">
-          <label class="block text-gray-700 font-medium mb-2">Cantidad de Clases (Clasificación)</label>
-          <input type="number" min="1" class="w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300" placeholder="Ej: 3">
-        </div>
-        <div id="supervised-learning-params" class="hidden">
-          <label class="block text-gray-700 font-medium mb-2">Selección de Variables de Entrada y de Salida</label>
-          <input type="text" class="w-full text-gray-700 bg-gray-50 rounded-lg border border-gray-300" placeholder="Variables de entrada, variable de salida">
-        </div>
-      </div>
     </div>
 
     <div class="flex gap-4">
-      <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Entrenar</button>
-      <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">Predecir</button>
-      <button class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg">Mostrar Gráficas</button>
+      <button id="train-button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Entrenar</button>
+      <button id="predict-button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">Predecir</button>
+      <button id="show-graph-button" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg">Tendencias</button>
+      <button id="patterns-button" class="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg">Patrones</button>
     </div>
   </div>
 
+  <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg my-4">
+    <h2 class="text-xl font-semibold text-gray-700">Resultados</h2>
+    <div id="results" class="mt-4">
+      <div id="log"></div>
+    </div>
+    <div id="chart" style="width: 900px; height: 500px;"></div>
+  </div>
+
+  <script src="./index.js" type="module"></script>
+  <script src="./tytus.js"></script>
   <script src="https://unpkg.com/flowbite@1.3.3/dist/flowbite.js"></script>
 </body>
 
