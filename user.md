@@ -22,7 +22,7 @@ La interfaz se compone de las siguientes secciones:
 4. **Botones de Acción**
 5. **Resultados**
 
-![Interfaz de Usuario](./imgs/ui.png)
+![Interfaz de Usuario](https://raw.githubusercontent.com/damianpeaf/IA1_Proyecto2_202110568/refs/heads/main/imgs/ui.png)
 
 ### Guía Paso a Paso
 
@@ -45,7 +45,7 @@ La interfaz se compone de las siguientes secciones:
      1. Haz clic en el menú desplegable.
      2. Selecciona el modelo deseado (por ejemplo, "Regresión Lineal").
 
-![Interfaz de Usuario](./imgs/models.png) 
+![Interfaz de Usuario](https://raw.githubusercontent.com/damianpeaf/IA1_Proyecto2_202110568/refs/heads/main/imgs/models.png) 
 
 
 #### 3. Parámetros Específicos del Modelo
